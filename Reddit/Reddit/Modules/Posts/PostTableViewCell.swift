@@ -9,5 +9,8 @@
 import UIKit
 
 class PostTableViewCell : UITableViewCell {
-
+    
+    func setupWithPost(_ post:RedditPost){
+        
+    }
 }

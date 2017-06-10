@@ -8,6 +8,93 @@
 
 import Foundation
 
-class PostViewDataManager : NSObject, PostViewDataManagerProtocol {
 
+let topPath = "top.json"
+
+class PostViewDataManager : NSObject, PostViewDataManagerProtocol {
+    private var posts : [RedditPost] = []
+    
+    private var after : String?
+    private var loading = false
+    
+    enum JsonKey:String {
+        case data
+        case children
+        case after
+        case limit
+    }
+    
+    func numberOfPosts() -> Int {
+        return self.posts.count
+    }
+    
+    func postAtIndex(_ index:Int) -> RedditPost? {
+        
+        if index < self.posts.count {
+            return self.posts[index]
+        }
+        
+        return nil
+    }
+    
+    func loadMore(_ completionHandler : @escaping ()->() ) -> Bool {
+        
+        if self.posts.count > AppDefinitions.MAX_POSTS {
+            return false
+        }
+        
+        if self.loading { return false }
+        
+        self.loading = true
+        
+        self.loadMorePosts { [weak self] (newPosts) in
+            self?.posts.append(contentsOf: newPosts)
+            self?.loading = false
+            
+            DispatchQueue.main.async {
+                completionHandler()
+            }
+        }
+        
+        return true
+    }
+    
+    private func loadMorePosts(_ completionHandler : @escaping ([RedditPost])->() ) {
+        var params : [String : Any] = [:]
+        if let mAfter = after {
+            params[JsonKey.after.rawValue] = mAfter
+        }
+        
+        params[JsonKey.limit.rawValue] = AppDefinitions.PAGE_LIMIT
+        
+        let serverUrlStr = AppDefinitions.API_URL
+        let urlString = serverUrlStr.stringByAppendingPathComponent(path: topPath)
+        
+        HTTPClient.shared.GET(url: urlString, params: params, completion: { (json) in
+            self.processJson(json, completionHandler: completionHandler)
+        }) {
+            
+        }
+    }
+    
+    private func processJson(_ json:[String:Any], completionHandler: @escaping ([RedditPost])->() ) {
+        guard let dataDict = json[JsonKey.data.rawValue] as? [String:Any] else { return }
+        
+        guard let children = dataDict[JsonKey.children.rawValue] as? [[String:Any]] else { return }
+        
+        var posts : [RedditPost] = []
+        
+        if let after = dataDict[JsonKey.after.rawValue] as? String {
+            self.after = after
+        }
+        
+        for child in children {
+            guard let childData = child[JsonKey.data.rawValue] as? [String:Any] else { continue }
+            
+            let post = RedditPost(json:childData)
+            posts.append(post)
+        }
+        
+        completionHandler(posts)
+    }
 }

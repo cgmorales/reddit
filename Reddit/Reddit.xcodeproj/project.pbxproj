@@ -17,6 +17,9 @@
 		404DE0AB1EE6176700EF8082 /* PostViewDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DE0AA1EE6176700EF8082 /* PostViewDataManager.swift */; };
 		404DE0AD1EE617ED00EF8082 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DE0AC1EE617ED00EF8082 /* PostTableViewCell.swift */; };
 		404DE0D31EE782B500EF8082 /* PostViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DE0D21EE782B500EF8082 /* PostViewProtocols.swift */; };
+		404DE15A1EEC773700EF8082 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DE1561EEC773700EF8082 /* HTTPClient.swift */; };
+		404DE15C1EEC77E900EF8082 /* AppDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DE15B1EEC77E900EF8082 /* AppDefinitions.swift */; };
+		404DE1621EEC784600EF8082 /* String+pathComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DE15F1EEC784600EF8082 /* String+pathComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		404DE0AA1EE6176700EF8082 /* PostViewDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewDataManager.swift; sourceTree = "<group>"; };
 		404DE0AC1EE617ED00EF8082 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		404DE0D21EE782B500EF8082 /* PostViewProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewProtocols.swift; sourceTree = "<group>"; };
+		404DE1561EEC773700EF8082 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		404DE15B1EEC77E900EF8082 /* AppDefinitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDefinitions.swift; sourceTree = "<group>"; };
+		404DE15F1EEC784600EF8082 /* String+pathComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+pathComponent.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +70,7 @@
 		404DE0871EE60C6800EF8082 /* Reddit */ = {
 			isa = PBXGroup;
 			children = (
+				404DE1501EEC773700EF8082 /* Utils */,
 				404DE0A71EE6166B00EF8082 /* Model */,
 				404DE0A01EE6145500EF8082 /* Modules */,
 				404DE0881EE60C6800EF8082 /* AppDelegate.swift */,
@@ -98,6 +105,7 @@
 		404DE0A71EE6166B00EF8082 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				404DE15B1EEC77E900EF8082 /* AppDefinitions.swift */,
 				404DE0A81EE6167C00EF8082 /* RedditPost.swift */,
 			);
 			path = Model;
@@ -109,6 +117,31 @@
 				404DE0AC1EE617ED00EF8082 /* PostTableViewCell.swift */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		404DE1501EEC773700EF8082 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				404DE15D1EEC784600EF8082 /* Extensions */,
+				404DE1551EEC773700EF8082 /* Network */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		404DE1551EEC773700EF8082 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				404DE1561EEC773700EF8082 /* HTTPClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		404DE15D1EEC784600EF8082 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				404DE15F1EEC784600EF8082 /* String+pathComponent.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,11 +216,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				404DE15C1EEC77E900EF8082 /* AppDefinitions.swift in Sources */,
 				404DE0AD1EE617ED00EF8082 /* PostTableViewCell.swift in Sources */,
+				404DE1621EEC784600EF8082 /* String+pathComponent.swift in Sources */,
 				404DE0A91EE6167C00EF8082 /* RedditPost.swift in Sources */,
 				404DE0A61EE6149900EF8082 /* PostViewInterfaceAdapter.swift in Sources */,
 				404DE0A41EE6147D00EF8082 /* PostsViewController.swift in Sources */,
 				404DE0AB1EE6176700EF8082 /* PostViewDataManager.swift in Sources */,
+				404DE15A1EEC773700EF8082 /* HTTPClient.swift in Sources */,
 				404DE0891EE60C6800EF8082 /* AppDelegate.swift in Sources */,
 				404DE0D31EE782B500EF8082 /* PostViewProtocols.swift in Sources */,
 			);

@@ -10,4 +10,10 @@ import Foundation
 
 protocol PostViewDataManagerProtocol {
     
+    func numberOfPosts() -> Int
+    
+    func postAtIndex(_ index:Int) -> RedditPost?
+    
+    func loadMore(_ completionHandler : @escaping ()->() ) -> Bool
+    
 }
