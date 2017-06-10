@@ -20,6 +20,8 @@
 		404DE15A1EEC773700EF8082 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DE1561EEC773700EF8082 /* HTTPClient.swift */; };
 		404DE15C1EEC77E900EF8082 /* AppDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DE15B1EEC77E900EF8082 /* AppDefinitions.swift */; };
 		404DE1621EEC784600EF8082 /* String+pathComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DE15F1EEC784600EF8082 /* String+pathComponent.swift */; };
+		404DE1661EECA38300EF8082 /* DateFormatter+TimeSince.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DE1641EECA38300EF8082 /* DateFormatter+TimeSince.swift */; };
+		404DE1671EECA38300EF8082 /* UIImage+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DE1651EECA38300EF8082 /* UIImage+URL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		404DE1561EEC773700EF8082 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		404DE15B1EEC77E900EF8082 /* AppDefinitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDefinitions.swift; sourceTree = "<group>"; };
 		404DE15F1EEC784600EF8082 /* String+pathComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+pathComponent.swift"; sourceTree = "<group>"; };
+		404DE1641EECA38300EF8082 /* DateFormatter+TimeSince.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+TimeSince.swift"; sourceTree = "<group>"; };
+		404DE1651EECA38300EF8082 /* UIImage+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+URL.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,8 @@
 		404DE15D1EEC784600EF8082 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				404DE1641EECA38300EF8082 /* DateFormatter+TimeSince.swift */,
+				404DE1651EECA38300EF8082 /* UIImage+URL.swift */,
 				404DE15F1EEC784600EF8082 /* String+pathComponent.swift */,
 			);
 			path = Extensions;
@@ -219,6 +225,7 @@
 				404DE15C1EEC77E900EF8082 /* AppDefinitions.swift in Sources */,
 				404DE0AD1EE617ED00EF8082 /* PostTableViewCell.swift in Sources */,
 				404DE1621EEC784600EF8082 /* String+pathComponent.swift in Sources */,
+				404DE1671EECA38300EF8082 /* UIImage+URL.swift in Sources */,
 				404DE0A91EE6167C00EF8082 /* RedditPost.swift in Sources */,
 				404DE0A61EE6149900EF8082 /* PostViewInterfaceAdapter.swift in Sources */,
 				404DE0A41EE6147D00EF8082 /* PostsViewController.swift in Sources */,
@@ -226,6 +233,7 @@
 				404DE15A1EEC773700EF8082 /* HTTPClient.swift in Sources */,
 				404DE0891EE60C6800EF8082 /* AppDelegate.swift in Sources */,
 				404DE0D31EE782B500EF8082 /* PostViewProtocols.swift in Sources */,
+				404DE1661EECA38300EF8082 /* DateFormatter+TimeSince.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
