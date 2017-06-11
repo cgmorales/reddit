@@ -8,8 +8,8 @@
 
 import UIKit
 
-class PostViewInterfaceAdapter: NSObject {
-    let dataManager = PostViewDataManager()
+class PostViewInterfaceAdapter: NSObject, NSCoding {
+    fileprivate var dataManager = PostViewDataManager()
     
     fileprivate var tableView : UITableView?
     
@@ -22,6 +22,20 @@ class PostViewInterfaceAdapter: NSObject {
         if loading {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
         }
+    }
+    
+    override init() {
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        if let dataManager = PostViewDataManager(coder: aDecoder) {
+            self.dataManager = dataManager
+        }
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        self.dataManager.encode(with: aCoder)
     }
 }
 

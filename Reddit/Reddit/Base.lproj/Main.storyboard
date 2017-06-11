@@ -13,7 +13,7 @@
         <!--Posts View Controller-->
         <scene sceneID="Uxn-nq-OMZ">
             <objects>
-                <tableViewController id="pjB-eQ-aBD" customClass="PostsViewController" customModule="Reddit" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PostsViewControllerId" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pjB-eQ-aBD" customClass="PostsViewController" customModule="Reddit" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="112" sectionHeaderHeight="28" sectionFooterHeight="28" id="Q7E-n5-g2G">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

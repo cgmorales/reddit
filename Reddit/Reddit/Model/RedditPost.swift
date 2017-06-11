@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RedditPost: NSObject {
+class RedditPost: NSObject, NSCoding {
     var title : String?
     var author : String?
     var comments : Int?
@@ -49,5 +49,33 @@ class RedditPost: NSObject {
         if let dateNumber = json[JsonKey.createdUTC.rawValue] as? TimeInterval {
             post.created = dateNumber
         }
+    }
+
+    //MARK: Encoding for state preservation/restoration
+    enum PropertyKey : String {
+        case title
+        case author
+        case comments
+        case created
+        case thumbUrl
+        case imgUrl
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.title, forKey: PropertyKey.title.rawValue)
+        aCoder.encode(self.author, forKey: PropertyKey.author.rawValue)
+        aCoder.encode(self.comments, forKey: PropertyKey.comments.rawValue)
+        aCoder.encode(self.created, forKey: PropertyKey.created.rawValue)
+        aCoder.encode(self.thumbUrl, forKey: PropertyKey.thumbUrl.rawValue)
+        aCoder.encode(self.imgUrl, forKey: PropertyKey.imgUrl.rawValue)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.title = aDecoder.decodeObject(forKey: PropertyKey.title.rawValue) as? String
+        self.author = aDecoder.decodeObject(forKey: PropertyKey.author.rawValue) as? String
+        self.comments = aDecoder.decodeObject(forKey: PropertyKey.comments.rawValue) as? Int
+        self.created = aDecoder.decodeObject(forKey: PropertyKey.created.rawValue) as? TimeInterval
+        self.thumbUrl = aDecoder.decodeObject(forKey: PropertyKey.thumbUrl.rawValue) as? String
+        self.imgUrl = aDecoder.decodeObject(forKey: PropertyKey.imgUrl.rawValue) as? String
     }
 }

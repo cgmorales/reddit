@@ -11,11 +11,11 @@ import Foundation
 
 let topPath = "top.json"
 
-class PostViewDataManager : NSObject, PostViewDataManagerProtocol {
-    private var posts : [RedditPost] = []
+class PostViewDataManager : NSObject, NSCoding {
+    fileprivate var posts : [RedditPost] = []
     
-    private var after : String?
-    private var loading = false
+    fileprivate var after : String?
+    fileprivate var loading = false
     
     enum JsonKey:String {
         case data
@@ -24,6 +24,33 @@ class PostViewDataManager : NSObject, PostViewDataManagerProtocol {
         case limit
     }
     
+    enum PropertyKey :String {
+        case posts
+        case after
+    }
+    
+    override init() {
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        if let savedAfter = aDecoder.decodeObject(forKey: PropertyKey.after.rawValue) as? String {
+            self.after = savedAfter
+        }
+        
+        if let savedPosts = aDecoder.decodeObject(forKey: PropertyKey.posts.rawValue) as? [RedditPost] {
+            self.posts = savedPosts
+        }
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.posts, forKey: PropertyKey.posts.rawValue)
+        aCoder.encode(self.after, forKey: PropertyKey.after.rawValue)
+    }
+}
+
+extension PostViewDataManager: PostViewDataManagerProtocol {
+
     func numberOfPosts() -> Int {
         return self.posts.count
     }
