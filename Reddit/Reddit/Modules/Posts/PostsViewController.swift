@@ -26,6 +26,10 @@ class PostsViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        self.interfaceAdapter.prepare(for: segue, sender: sender)
+    }
+    
     // MARK: - State preservation / restoration
     
     enum PropertyKey :String {

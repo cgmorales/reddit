@@ -10,7 +10,8 @@ import UIKit
 
 class PostViewInterfaceAdapter: NSObject, NSCoding {
     fileprivate var dataManager = PostViewDataManager()
-    
+    let router = PostViewRouter()
+
     fileprivate var tableView : UITableView?
     
     fileprivate func loadMore() {
@@ -36,6 +37,29 @@ class PostViewInterfaceAdapter: NSObject, NSCoding {
     
     func encode(with aCoder: NSCoder) {
         self.dataManager.encode(with: aCoder)
+    }
+    
+    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let button = sender as? UIButton else { return }
+        
+        var superview = button.superview
+        var isCell = superview?.isKind(of: UITableViewCell.self) ?? false
+        
+        while superview != nil && !isCell{
+            superview = superview?.superview
+            isCell = superview?.isKind(of: UITableViewCell.self) ?? false
+        }
+        
+        var post : RedditPost? = nil
+        if let cell = superview as? UITableViewCell {
+            guard let indexPath = self.tableView?.indexPath(for: cell) else { return }
+            post = self.dataManager.postAtIndex(indexPath.row)
+        }
+        
+        if let rPost = post {
+            self.router.prepare(for: segue, sender: sender, post:rPost)
+        }
     }
 }
 
