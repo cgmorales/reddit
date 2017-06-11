@@ -25,7 +25,7 @@ class PostDetailViewController: UIViewController {
         
     }
     
-    private func loadImage(){
+    fileprivate func loadImage(){
         if let urlString = self.urlString {
             UIImage.downloadedFrom(link: urlString, completionHandler: { [weak self] (image) in
                 self?.imageView.image = image
@@ -54,5 +54,34 @@ class PostDetailViewController: UIViewController {
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             present(ac, animated: true)
         }
+    }
+}
+
+//MARK: state restoration/preservation
+
+extension PostDetailViewController {
+    enum PropertyKey : String {
+        case urlString
+        case titleString
+    }
+    
+    override func encodeRestorableState(with coder: NSCoder) {
+        coder.encode(self.urlString, forKey: PropertyKey.urlString.rawValue)
+        coder.encode(self.titleString, forKey: PropertyKey.titleString.rawValue)
+        super.encodeRestorableState(with: coder)
+    }
+    
+    override func decodeRestorableState(with coder: NSCoder) {
+        super.decodeRestorableState(with: coder)
+        if let savedTitle = coder.decodeObject(forKey: PropertyKey.titleString.rawValue) as? String {
+            self.titleString = savedTitle
+            self.title = self.titleString
+            
+        }
+        if let savedUrl = coder.decodeObject(forKey: PropertyKey.urlString.rawValue) as? String {
+            self.urlString = savedUrl
+            self.loadImage()
+        }
+        
     }
 }

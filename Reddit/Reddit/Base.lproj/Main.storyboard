@@ -96,7 +96,7 @@
         <!--Image-->
         <scene sceneID="xRC-Pv-FVF">
             <objects>
-                <viewController id="m6l-BY-2JO" customClass="PostDetailViewController" customModule="Reddit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostDetailViewControllerId" useStoryboardIdentifierAsRestorationIdentifier="YES" id="m6l-BY-2JO" customClass="PostDetailViewController" customModule="Reddit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kyo-bP-JZw"/>
                         <viewControllerLayoutGuide type="bottom" id="Bkl-5E-V1r"/>
